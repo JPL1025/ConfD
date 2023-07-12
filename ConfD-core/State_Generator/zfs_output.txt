@@ -1,0 +1,26 @@
+(mkezfs) -b 512
+(mkezfs) -b 512 -o 512
+(mkezfs) -b 32768 -o 512
+(mkezfs) -b 32768 -o 32768
+(mkezfs) -b 512 -o 32768
+(mkezfs) -b 1024 -o 32768
+(mkezfs) -b 32768 -o 1024
+(mkezfs) -b 512 -o 1024
+(mkezfs) -b 1024 -o 1024
+(mkezfs) -b 1024 -o 512
+(mkezfs) -b 32768
+(mkezfs) -b 1024
+(mkezfs) -o 512
+(mkezfs) -o 32768
+(mkezfs) -o 1024
+(mkezfs)
+(mkezfs) -o 0
+(mkezfs) -o 1 -o 0
+(mkezfs) -o 1
+(mkezfs)
+(mkezfs) -o 1 -o 0
+(mkezfs) -o 0
+(mkezfs) -o 0
+(mkezfs) -o 0
+(mkezfs) -o 1
+(mkezfs) -o 3

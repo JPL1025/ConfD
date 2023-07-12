@@ -1,0 +1,7 @@
+{
+	"blocksize": 4096,
+	"volblocksize": 4096,
+	"checksum": "0",
+	"compression": "1",
+	"copies": 2
+}
