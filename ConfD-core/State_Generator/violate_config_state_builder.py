@@ -197,7 +197,7 @@ def generate(my_config, constraint_data, target_num, final_states, invalid_state
     for id in try_list:
         #checks if valid id num
         if(id_lookup(constraint_data, id) != None):
-            #print("lookin at " + id_lookup(constraint_data, id))
+            #print("looking at " + id_lookup(constraint_data, id))
             #check if completed task
             if(states_made >= target_num):
                 depth -= 1  
