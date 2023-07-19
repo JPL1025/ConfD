@@ -17,11 +17,7 @@ states_made = 0
 max_depth = 0
 
 argument_key = {
-    "blocksize": "-b", "cluster_size": "-C", "blocks-per-group": "-g", "flex_bg_size": "-G",
-    "inode_size": "-I", "error_behavior": "-e", "inode_ratio": "-i", "num_inodes": "-N",
-    "feature": "-O", "revision": "-r", "extended-options": "-E"                                           #Carson Added 10/30 
-    #"creator_os": "-o", "r_opt": "-r", "reserved_ratio": "-m", "filename": "-L", "fs_type": "-t" 
-    #"version": "-V", "vebose": "-v" "force": "-F","quiet": "-q"
+    "blocksize": "-b", "feature": "-o"
 }
 
 reverse_argument_key = {v: k for k, v in argument_key.items()}
@@ -30,20 +26,11 @@ feature_args = {
         "blocksize", "volblocksize", "checksum", "compression", "copies"
         }
 
-journal_args = {
-    "ext3_journal": "-j",
-    "journal_size": "size=",
-    "fast_commit_size": "fast_commit_size=",
-    "location": "location=",
-    "device": "device="
-}
-
-
 default_feature_args = {
-        "blocksize": 4096,
-        "volblocksize": 4096,
-        "checksum": "on",
-        "compression": "off",
+        "blocksize": 8192,
+        "volblocksize": 8192,
+        "checksum": "0",
+        "compression": "0",
         "copies": 2
         }
 
@@ -152,32 +139,31 @@ def verify_config(my_config, constraint_data):
                             return False
     return True
 
-#Generates states up to target number 
+#Generates states up to target number
 def generate(my_config, constraint_data, target_num, final_states, try_list):
     global states_made
     global depth
     depth += 1
     for id in try_list:
-
         #checks if valid id num
         if(id_lookup(constraint_data, id) != None):
             print("looking at " + id_lookup(constraint_data, id))
             #check if completed task
             if(states_made >= target_num):
-                depth -= 1  
+                depth -= 1
                 return
-               
+
             #checks if too deep
             if(depth > max_depth):
                 depth -= 1
                 return
-               
-               
-            #creates new state(s) 
+
+
+            #creates new state(s)
             new_configs = []
             temp = copy.deepcopy(my_config)
             new_configs.append(temp)
-            
+
             #checks if arg already present
             if(my_config.arg.get(id_lookup(constraint_data, id), None) != None):
                 if(default_feature_args.get(id_lookup(constraint_data, id), None) == None):
@@ -205,8 +191,8 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                     else:
                         #case just max
                         temp.arg[id_lookup(constraint_data, id)]=1
-                    
-            else:  
+
+            else:
                 #case not a dup
                 if(constraint_data[id_lookup(constraint_data, id)]["takes_value"] == "no"):
                     #case no parameter
@@ -218,7 +204,7 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                         new_configs.append(temp2)
                         temp3 = copy.deepcopy(my_config)
                         new_configs.append(temp3)
-                        
+
                         temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_min"]
                         temp2.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_max"]
                         temp3.arg[id_lookup(constraint_data, id)]=nextPow2(int(constraint_data[id_lookup(constraint_data, id)]["value_range_min"]) + 1)
@@ -230,14 +216,14 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                         #case just max
                         temp2 = copy.deepcopy(my_config)
                         new_configs.append(temp2)
-                        
+
                         temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_max"]
                         temp2.arg[id_lookup(constraint_data, id)]=1
                     else:
                         #case no min/max
-                        temp.arg[id_lookup(constraint_data, id)]=1           
-            
-            
+                        temp.arg[id_lookup(constraint_data, id)]=1
+
+
             for temp_config in new_configs:
                 #print(temp_config.arg)
                 #checks if state already been added
@@ -254,7 +240,7 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                         print(id_lookup(constraint_data, id))
                         print("")
                         final_states.append(temp_config)
-                    
+
                     #determine what to try next
                     next_list = []
                     for name in constraint_data[id_lookup(constraint_data, id)]["dependency"]:
@@ -264,15 +250,15 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                             next_list.append(constraint_data[name]["id"])
                     #print(next_list)
                     #print("")
-                    
+
                     #go deeper
                     generate(temp_config, constraint_data, target_num, final_states, next_list)
-    
+
     depth -= 1
 
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
-    output="zfs create"
+    output="(zfs)"
     features = []
 
     for arg in config.arg:
@@ -296,7 +282,7 @@ def ConfigToCMD(config, constraint_data):
                 output += "off"
         else:
             output += str(config.arg[item])
-    
+
     return output
 
 
@@ -308,9 +294,9 @@ def main(argv):
         print("Missing mkezfs_constraints.json file")
         return -1
 
-    if(not os.path.exists("zfs_default_config.json")):
-        print("Missing zfs_default_config.json file")
-        return -1
+    #if(not os.path.exists("zfs_default_config.json")):
+    #    print("Missing zfs_default_config.json file")
+    #    return -1
 
     if(len(sys.argv) != 3):
         print("Invalid arguments")
@@ -329,9 +315,9 @@ def main(argv):
     
     
     #get default configuration
-    json_file=open('zfs_default_config.json')
-    default_feature_args = json.load(json_file)
-    json_file.close()
+    #json_file=open('zfs_default_config.json')
+    #default_feature_args = json.load(json_file)
+    #json_file.close()
     
     #Checking some states
     """
@@ -358,9 +344,9 @@ def main(argv):
     """
     my_config = Configuration()
     final_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,51)))
-    
-    
+    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,6)))
+
+
     print("Final States")
     output_file = open("zfs_output.txt", "w")
     for state in final_states:

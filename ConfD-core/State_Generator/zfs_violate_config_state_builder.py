@@ -18,11 +18,7 @@ max_depth = 0
 misspell = False
 
 argument_key = {
-    "blocksize": "-b", "cluster_size": "-C", "blocks-per-group": "-g", "flex_bg_size": "-G",
-    "inode_size": "-I", "error_behavior": "-e", "inode_ratio": "-i", "num_inodes": "-N",
-    "feature": "-O", "revision": "-r", "extended-options": "-E"                                           #Carson Added 10/30
-    #"creator_os": "-o", "r_opt": "-r", "reserved_ratio": "-m", "filename": "-L", "fs_type": "-t"
-    #"version": "-V", "vebose": "-v" "force": "-F","quiet": "-q"
+    "blocksize": "-b", "feature": "-o"
 }
 
 reverse_argument_key = {v: k for k, v in argument_key.items()}
@@ -31,22 +27,14 @@ feature_args = {
     "blocksize", "volblocksize", "checksum", "compression", "copies"
 }
 
-journal_args = {
-    "ext3_journal": "-j",
-    "journal_size": "size=",
-    "fast_commit_size": "fast_commit_size=",
-    "location": "location=",
-    "device": "device="
-}
-
-
 default_feature_args = {
-    "blocksize": 4096,
-    "volblocksize": 4096,
-    "checksum": "on",
-    "compression": "off",
+    "blocksize": 8192,
+    "volblocksize": 8192,
+    "checksum": "0",
+    "compression": "0",
     "copies": 2
 }
+
         
 
 class Configuration:
@@ -334,9 +322,9 @@ def main(argv):
         print("Missing mkezfs_constraints.json file")
         return -1
     
-    if(not os.path.exists("default_config.json")):
-        print("Missing default_config.json file")
-        return -1
+    #if(not os.path.exists("default_config.json")):
+    #    print("Missing default_config.json file")
+    #    return -1
         
     if(len(sys.argv) != 4):
         print("Invalid arguments")
@@ -358,9 +346,9 @@ def main(argv):
     
     
     #get default configuration
-    json_file=open('zfs_default_config.json')
-    default_feature_args = json.load(json_file)
-    json_file.close()
+    #json_file=open('zfs_default_config.json')
+    #default_feature_args = json.load(json_file)
+    #json_file.close()
     
     
     #Checking some states
@@ -389,7 +377,7 @@ def main(argv):
     my_config = Configuration()
     final_states = []
     invalid_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, invalid_states, list(range(1,51)))
+    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, invalid_states, list(range(1,6)))
     
     
     print("Final (Invalid) States")
