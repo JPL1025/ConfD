@@ -152,33 +152,6 @@ def verify_config(my_config, constraint_data):
                             return False
     return True
 
-#Lookup table for non-integer min and max values
-def convert(value):
-    if(value == "on"):
-        return 0
-    elif(min == "off"):
-        return 1
-    elif(min == "flecther2" or min == "gzip"):
-        return 2
-    elif(min == "flecther4" or min == "gzip-N"):
-        return 3
-    elif(min == "sha256" or min == "lz4"):
-        return 4
-    elif(min == "noparity" or min == "lzjb"):
-        return 5
-    elif(min == "sha512" or min == "zle"):
-        return 6
-    elif(min == "skein" or min == "zstd"):
-        return 7
-    elif(min == "edonr" or min == "zstd-N"):
-        return 8
-    elif(min == "zstd-fast"):
-        return 9
-    elif(min == "zstd-fast-N"):
-        return 10
-    return value
-
-
 #Generates states up to target number 
 def generate(my_config, constraint_data, target_num, final_states, try_list):
     global states_made
@@ -308,37 +281,23 @@ def ConfigToCMD(config, constraint_data):
     journal = []
     
     for arg in config.arg:
-        #Skips if part of defualt config
+        #Skips if part of default config
         if((default_feature_args.get(arg, None) == None) or ((default_feature_args.get(arg, None) != None) and (str(default_feature_args[arg]) != str(config.arg[arg])))):
             flag = constraint_data[arg]["flag"]
-            if(flag == "-O"):
+            if(flag == "-o"):
                 if(config.arg[arg] == "enable"):
                     features.append(arg)
                 else:
                     features.append("^"+arg)
                 hasFeature = True
-            elif(flag == "-E"):
-                extends.append(arg + "=" + str(config.arg[arg]))
-                hasExtended = True
-            elif(flag == "-J"):
-                journal.append(arg + "=" + str(config.arg[arg]))
-                hasJournal = True
             else:
                 output += " " + flag + " " + str(config.arg[arg])
     
     
     if(hasFeature):
-        output += " -O "
-        output += ",".join(str(item) for item in features)
-        
-    if(hasExtended):
-        output += " -E "
-        output += ",".join(str(item) for item in extends)
-        #output += ", ".join(str(item + " " + str(config.arg[item])) for item in extends)
-        
-    if(hasJournal):
-        output += " -J "
-        output += ",".join(str(item) for item in journal)
+        output += " -o "
+        output +=
+        #output += ",".join(str(item) for item in features)
     
     return output
 
