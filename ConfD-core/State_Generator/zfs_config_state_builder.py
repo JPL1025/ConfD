@@ -23,14 +23,13 @@ argument_key = {
 reverse_argument_key = {v: k for k, v in argument_key.items()}
 
 feature_args = {
-        "blocksize", "volblocksize", "checksum", "compression", "copies"
+        "volblocksize", "checksum", "compression", "copies"
         }
 
 default_feature_args = {
-        "blocksize": 8192,
         "volblocksize": 8192,
-        "checksum": "0",
-        "compression": "0",
+        "checksum": 0,
+        "compression": 0,
         "copies": 2
         }
 

@@ -69,5 +69,57 @@
         ],
         "critical": {
         }
+    },
+    "devices": {
+        "id": 6,
+        "variable": "ZFS_PROP_DEVICES",
+        "flag": "-o",
+        "value_type": "i32",
+        "takes_value": "yes",
+        "value_range_max": "1",
+        "value_range_min": "0",
+        "dependency": [
+        ],
+        "critical": {
+        }
+    },
+    "exec": {
+        "id": 7,
+        "variable": "ZFS_PROP_EXEC",
+        "flag": "-o",
+        "value_type": "i32",
+        "takes_value": "yes",
+        "value_range_max": "1",
+        "value_range_min": "0",
+        "dependency": [
+        ],
+        "critical": {
+        }
+    },
+    "readonly": {
+        "id": 8,
+        "variable": "ZFS_PROP_READONLY",
+        "flag": "-o",
+        "value_type": "i32",
+        "takes_value": "yes",
+        "value_range_max": "1",
+        "value_range_min": "0",
+        "dependency": [
+        ],
+        "critical": {
+        }
+    },
+    "recordsize": {
+        "id": 9,
+        "variable": "ZFS_PROP_RECORDSIZE",
+        "flag": "-o",
+        "value_type": "i64",
+        "takes_value": "yes",
+        "value_range_max": 131072,
+        "value_range_min": 512,
+        "dependency": [
+        ],
+        "critical": {
+        }
     }
 }
