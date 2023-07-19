@@ -273,7 +273,6 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
     output="zfs create"
-    hasFeature = False
     features = []
 
     for arg in config.arg:
@@ -287,16 +286,16 @@ def ConfigToCMD(config, constraint_data):
 
     for item in features:
         output += " -o "
-        output += str(arg)
+        output += str(item)
         output += "="
         #for these arguments, output on and off rather than 0 or 1
-        if (str(arg) == "checksum" or str(arg) == "compression"):
-            if (config.arg[arg] == 0):
+        if (str(item) == "checksum" or str(item) == "compression"):
+            if (config.arg[item] == 0):
                 output += "on"
             else:
                 output += "off"
         else:
-            output += str(config.arg[arg])
+            output += str(config.arg[item])
     
     return output
 

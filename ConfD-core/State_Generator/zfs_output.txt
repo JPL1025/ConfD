@@ -1,26 +1,26 @@
 zfs create -b 512
-zfs create -b 512 -o blocksize=512
-zfs create -b 512 -o blocksize=512
-zfs create -b 512 -o blocksize=512
+zfs create -b 512 -o volblocksize=512
+zfs create -b 512 -o volblocksize=32768
+zfs create -b 512 -o volblocksize=1024
 zfs create -b 32768
-zfs create -b 32768 -o blocksize=32768
-zfs create -b 32768 -o blocksize=32768
-zfs create -b 32768 -o blocksize=32768
+zfs create -b 32768 -o volblocksize=512
+zfs create -b 32768 -o volblocksize=32768
+zfs create -b 32768 -o volblocksize=1024
 zfs create -b 1024
-zfs create -b 1024 -o blocksize=1024
-zfs create -b 1024 -o blocksize=1024
-zfs create -b 1024 -o blocksize=1024
-zfs create -o copies=2
-zfs create -o copies=2
-zfs create -o copies=2
+zfs create -b 1024 -o volblocksize=512
+zfs create -b 1024 -o volblocksize=32768
+zfs create -b 1024 -o volblocksize=1024
+zfs create -o volblocksize=512
+zfs create -o volblocksize=32768
+zfs create -o volblocksize=1024
 zfs create
-zfs create -o copies=2
-zfs create -o copies=2 -o copies=2
-zfs create -o copies=2
+zfs create -o compression=off
+zfs create -o checksum=off -o compression=off
+zfs create -o checksum=off
 zfs create
-zfs create -o copies=2
+zfs create -o checksum=off
 zfs create
 zfs create
-zfs create -o copies=2
+zfs create -o compression=off
 zfs create -o copies=1
 zfs create -o copies=3

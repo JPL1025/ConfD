@@ -297,51 +297,31 @@ def generate(my_config, constraint_data, target_num, final_states, invalid_state
 
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
-    output="(mkezfs)"
-    hasFeature = False
+    output="zfs create"
     features = []
-    hasExtended = False
-    extends = []
-    hasJournal = False
-    journal = []
-    
+
     for arg in config.arg:
-        #Skips if part of defualt config
+        #Skips if part of default config
         if((default_feature_args.get(arg, None) == None) or ((default_feature_args.get(arg, None) != None) and (str(default_feature_args[arg]) != str(config.arg[arg])))):
-            #if flag lookup fails, assume -O
-            try:
-                flag = constraint_data[arg]["flag"]
-            except:
-                flag = "-O"
-            if(flag == "-O"):
-                if(config.arg[arg] == "enable"):
-                    features.append(arg)
-                else:
-                    features.append("^"+arg)
-                hasFeature = True
-            elif(flag == "-E"):
-                extends.append(arg + "=" + str(config.arg[arg]))
-                hasExtended = True
-            elif(flag == "-J"):
-                journal.append(arg + "=" + str(config.arg[arg]))
-                hasJournal = True
+            flag = constraint_data[arg]["flag"]
+            if(flag == "-o"):
+                features.append(arg)
             else:
                 output += " " + flag + " " + str(config.arg[arg])
-    
-    
-    if(hasFeature):
-        output += " -O "
-        output += ",".join(str(item) for item in features)
-        
-    if(hasExtended):
-        output += " -E "
-        output += ",".join(str(item) for item in extends)
-        #output += ", ".join(str(item + " " + str(config.arg[item])) for item in extends)
-    
-    if(hasJournal):
-        output += " -J "
-        output += ",".join(str(item) for item in journal)
-    
+
+    for item in features:
+        output += " -o "
+        output += str(item)
+        output += "="
+        #for these arguments, output on and off rather than 0 or 1
+        if (str(item) == "checksum" or str(item) == "compression"):
+            if (config.arg[item] == 0):
+                output += "on"
+            else:
+                output += "off"
+        else:
+            output += str(config.arg[item])
+
     return output
 
 
