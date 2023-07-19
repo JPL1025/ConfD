@@ -1,0 +1,26 @@
+zfs create -b 512
+zfs create -b 512 -o blocksize=512
+zfs create -b 512 -o blocksize=512
+zfs create -b 512 -o blocksize=512
+zfs create -b 32768
+zfs create -b 32768 -o blocksize=32768
+zfs create -b 32768 -o blocksize=32768
+zfs create -b 32768 -o blocksize=32768
+zfs create -b 1024
+zfs create -b 1024 -o blocksize=1024
+zfs create -b 1024 -o blocksize=1024
+zfs create -b 1024 -o blocksize=1024
+zfs create -o copies=2
+zfs create -o copies=2
+zfs create -o copies=2
+zfs create
+zfs create -o copies=2
+zfs create -o copies=2 -o copies=2
+zfs create -o copies=2
+zfs create
+zfs create -o copies=2
+zfs create
+zfs create
+zfs create -o copies=2
+zfs create -o copies=1
+zfs create -o copies=3

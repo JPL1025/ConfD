@@ -272,32 +272,31 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
 
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
-    output="(mkezfs)"
+    output="zfs create"
     hasFeature = False
     features = []
-    hasExtended = False
-    extends = []
-    hasJournal = False
-    journal = []
-    
+
     for arg in config.arg:
         #Skips if part of default config
         if((default_feature_args.get(arg, None) == None) or ((default_feature_args.get(arg, None) != None) and (str(default_feature_args[arg]) != str(config.arg[arg])))):
             flag = constraint_data[arg]["flag"]
             if(flag == "-o"):
-                if(config.arg[arg] == "enable"):
-                    features.append(arg)
-                else:
-                    features.append("^"+arg)
-                hasFeature = True
+                features.append(arg)
             else:
                 output += " " + flag + " " + str(config.arg[arg])
-    
-    
-    if(hasFeature):
+
+    for item in features:
         output += " -o "
-        output +=
-        #output += ",".join(str(item) for item in features)
+        output += str(arg)
+        output += "="
+        #for these arguments, output on and off rather than 0 or 1
+        if (str(arg) == "checksum" or str(arg) == "compression"):
+            if (config.arg[arg] == 0):
+                output += "on"
+            else:
+                output += "off"
+        else:
+            output += str(config.arg[arg])
     
     return output
 
