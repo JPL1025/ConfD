@@ -1,26 +1,26 @@
-(zfs) -b 512
-(zfs) -b 512 -o volblocksize=512
-(zfs) -b 512 -o volblocksize=32768
-(zfs) -b 512 -o volblocksize=1024
-(zfs) -b 32768
-(zfs) -b 32768 -o volblocksize=512
-(zfs) -b 32768 -o volblocksize=32768
-(zfs) -b 32768 -o volblocksize=1024
-(zfs) -b 1024
-(zfs) -b 1024 -o volblocksize=512
-(zfs) -b 1024 -o volblocksize=32768
-(zfs) -b 1024 -o volblocksize=1024
-(zfs) -o volblocksize=512
-(zfs) -o volblocksize=32768
-(zfs) -o volblocksize=1024
-(zfs)
-(zfs)
-(zfs) -o checksum=off
-(zfs) -o checksum=off -o compression=off
-(zfs) -o compression=off
-(zfs) -o compression=off
-(zfs)
-(zfs)
-(zfs) -o checksum=off
-(zfs) -o copies=1
-(zfs) -o copies=3
+zfs create -b 512
+zfs create -b 512 -o volblocksize=512
+zfs create -b 512 -o volblocksize=32768
+zfs create -b 512 -o volblocksize=1024
+zfs create -b 32768
+zfs create -b 32768 -o volblocksize=512
+zfs create -b 32768 -o volblocksize=32768
+zfs create -b 32768 -o volblocksize=1024
+zfs create -b 1024
+zfs create -b 1024 -o volblocksize=512
+zfs create -b 1024 -o volblocksize=32768
+zfs create -b 1024 -o volblocksize=1024
+zfs create -o volblocksize=512
+zfs create -o volblocksize=32768
+zfs create -o volblocksize=1024
+zfs create
+zfs create
+zfs create -o checksum=off
+zfs create -o checksum=off -o compression=off
+zfs create -o compression=off
+zfs create -o compression=off
+zfs create
+zfs create
+zfs create -o checksum=off
+zfs create -o copies=1
+zfs create -o copies=3

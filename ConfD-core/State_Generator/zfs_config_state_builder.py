@@ -257,7 +257,7 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
 
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
-    output="(zfs)"
+    output="zfs create"
     features = []
 
     for arg in config.arg:
