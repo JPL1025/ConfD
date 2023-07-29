@@ -23,18 +23,14 @@ argument_key = {
 reverse_argument_key = {v: k for k, v in argument_key.items()}
 
 feature_args = {
-        "volblocksize", "checksum", "compression", "copies", "devices", "exec", "readonly", "recordsize"
+        "volblocksize", "checksum", "compression", "copies"
         }
 
 default_feature_args = {
         "volblocksize": 8192,
         "checksum": 0,
         "compression": 0,
-        "copies": 2,
-        "devices": 0,
-        "exec": 0,
-        "readonly" : 1,
-        "recordsize": 8192
+        "copies": 2
         }
 
 
@@ -293,7 +289,7 @@ def main(argv):
     global default_feature_args
     global max_depth
     
-    if(not os.path.exists("extended_mkezfs_constraints.json")):
+    if(not os.path.exists("zfs_constraints.json")):
         print("Missing zfs_constraints.json file")
         return -1
 
@@ -309,7 +305,7 @@ def main(argv):
     max_final_states = int(sys.argv[2])
     
     #get constraints 
-    json_file=open('extended_mkezfs_constraints.json')
+    json_file=open('zfs_constraints.json')
     constraint_data = json.load(json_file)
     json_file.close()
     
@@ -347,11 +343,11 @@ def main(argv):
     """
     my_config = Configuration()
     final_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,10)))
+    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,6)))
 
 
     print("Final States")
-    output_file = open("extended_zfs_output.txt", "w")
+    output_file = open("zfs_output.txt", "w")
     for state in final_states:
         #print(state.arg)
         print(ConfigToCMD(state, constraint_data))

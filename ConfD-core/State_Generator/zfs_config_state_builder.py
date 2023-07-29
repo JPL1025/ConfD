@@ -289,8 +289,8 @@ def main(argv):
     global default_feature_args
     global max_depth
     
-    if(not os.path.exists("mkezfs_constraints.json")):
-        print("Missing mkezfs_constraints.json file")
+    if(not os.path.exists("zfs_constraints.json")):
+        print("Missing zfs_constraints.json file")
         return -1
 
     #if(not os.path.exists("zfs_default_config.json")):
@@ -305,7 +305,7 @@ def main(argv):
     max_final_states = int(sys.argv[2])
     
     #get constraints 
-    json_file=open('mkezfs_constraints.json')
+    json_file=open('zfs_constraints.json')
     constraint_data = json.load(json_file)
     json_file.close()
     
