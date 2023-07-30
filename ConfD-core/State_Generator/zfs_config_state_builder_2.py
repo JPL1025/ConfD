@@ -274,13 +274,10 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
 def getCritDisable(constraint_data):
     disable = []
 
-    numvars = 0
-
     for a in constraint_data:
         for crit in constraint_data[a]["critical"]:
             if (constraint_data[a]["critical"][crit] == "disable"):
                 disable.append(crit)
-        numvars += 1
 
     return disable
 
@@ -306,7 +303,7 @@ def simpleGenerate(initial_state, constraint_data, disable, max_depth):
 
 
 # converts fron Configuration to command line style
-def ConfigToCMD(config, constraint_data, disable):
+def ConfigToCMD(config, constraint_data, location):
     output = "zfs create"
     features = []
 
@@ -348,12 +345,11 @@ def main(argv):
     #    print("Missing zfs_default_config.json file")
     #    return -1
 
-    if (len(sys.argv) != 3):
+    if (len(sys.argv) != 2):
         print("Invalid arguments")
         return -1
 
-    max_depth = int(sys.argv[1])
-    max_final_states = int(sys.argv[2])
+    location = int(sys.argv[1])
 
     # get constraints
     json_file = open('zfs_constraints.json')
@@ -393,13 +389,13 @@ def main(argv):
     """
     my_config = Configuration()
     final_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1, 6)))
+    #generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1, 6)))
 
     print("Final States")
     output_file = open("zfs_output_2.txt", "w")
     for state in final_states:
         # print(state.arg)
-        print(ConfigToCMD(state, constraint_data))
+        print(ConfigToCMD(state, constraint_data, location))
         output_file.write(ConfigToCMD(state, constraint_data) + "\n")
     output_file.close()
 
