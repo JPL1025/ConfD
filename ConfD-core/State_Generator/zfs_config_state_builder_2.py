@@ -157,7 +157,6 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
                 depth -= 1
                 return
 
-
             #creates new state(s)
             new_configs = []
             temp = copy.deepcopy(my_config)
@@ -255,6 +254,26 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
 
     depth -= 1
 
+def getCritDisable(constraint_data):
+    global disable
+    disable = []
+    for a in constraint_data:
+        for crit in constraint_data[a]["critical"]:
+            if(constraint_data[a]["critical"][crit] == "disable"):
+                disable.append(crit)
+
+
+
+#attempt to generate the correct number of states with a different algorithm
+def simpleGenerate(my_config, constraint_data, target_num, final_states, try_list):
+    global states_created
+    global state_depth
+
+
+
+
+    return
+
 #converts fron Configuration to command line style 
 def ConfigToCMD(config, constraint_data):
     output="zfs create"
@@ -347,14 +366,16 @@ def main(argv):
 
 
     print("Final States")
-    output_file = open("zfs_output.txt", "w")
+    output_file = open("zfs_output_2.txt", "w")
     for state in final_states:
         #print(state.arg)
         print(ConfigToCMD(state, constraint_data))
         output_file.write(ConfigToCMD(state, constraint_data) + "\n")
     output_file.close()
-    
-    
+
+    getCritDisable(constraint_data)
+    for a in disable:
+        print(a)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
