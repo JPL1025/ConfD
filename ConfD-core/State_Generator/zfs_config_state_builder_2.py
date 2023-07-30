@@ -330,6 +330,8 @@ def ConfigToCMD(config, constraint_data, location):
         else:
             output += str(config.arg[item])
 
+    output += " " + location
+
     return output
 
 
