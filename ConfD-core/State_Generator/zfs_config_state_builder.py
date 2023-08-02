@@ -23,11 +23,13 @@ argument_key = {
 reverse_argument_key = {v: k for k, v in argument_key.items()}
 
 feature_args = {
-        "volblocksize", "checksum", "compression", "copies"
+        "blocktype, blocksize, volblocksize", "checksum", "compression", "copies"
         }
 
 default_feature_args = {
+        "blocktype": "disable",
         "volblocksize": 8192,
+        "blocksize": 8192,
         "checksum": 0,
         "compression": 0,
         "copies": 2
@@ -129,13 +131,16 @@ def verify_config(my_config, constraint_data):
                         #print(crit + " violated")
                         #print("")
                         return False
-                    #tests smaller
-                    if((constraint_data[a]["critical"][crit] == "smaller") and (my_config.arg.get(crit, None) != None)):
-                        if(int(my_config.arg[a]) < int(my_config.arg[crit])):
-                            #print(constraint_data[a])
-                            #print(crit + " violated")
-                            #print("")
-                            return False
+                    if((constraint_data[a]["critical"][crit] == "1") and ((my_config.arg.get(crit, None) == None) or (my_config.arg[crit] == "0"))):
+                        #print(constraint_data[a])
+                        #print(crit + " violated")
+                        #print("")
+                        return False
+                    if((constraint_data[a]["critical"][crit] == "0") and (my_config.arg.get(crit, None) != None) and (my_config.arg[crit] == "1")):
+                        #print(constraint_data[a])
+                        #print(crit + " violated")
+                        #print("")
+                        return False
     return True
 
 #Generates states up to target number
@@ -289,7 +294,7 @@ def main(argv):
     global default_feature_args
     global max_depth
     
-    if(not os.path.exists("zfs_constraints.json")):
+    if(not os.path.exists("zfs_constraints2.json")):
         print("Missing zfs_constraints.json file")
         return -1
 
@@ -305,7 +310,7 @@ def main(argv):
     max_final_states = int(sys.argv[2])
     
     #get constraints 
-    json_file=open('zfs_constraints.json')
+    json_file=open('zfs_constraints2.json')
     constraint_data = json.load(json_file)
     json_file.close()
     
@@ -343,7 +348,7 @@ def main(argv):
     """
     my_config = Configuration()
     final_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,6)))
+    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,7)))
 
 
     print("Final States")

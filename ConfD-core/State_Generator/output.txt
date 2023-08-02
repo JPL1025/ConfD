@@ -1,444 +1,128 @@
 (mke2fs) -O ^64bit
 (mke2fs) -b 1024 -O ^64bit
 (mke2fs) -b 1024 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 1024 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 67108864 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 2048 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -I 128 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -C 2048 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 1024 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 67108864 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 2048 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -I 128 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -C 1025 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 1024 -C 1025 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 1025 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -C 1025 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 1024 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -C 2048 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 1024 -C 2048 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 2048 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -C 2048 -O ^64bit,bigalloc
 (mke2fs) -b 1024 -i 1024 -O ^64bit
-(mke2fs) -b 65536 -i 1024 -O ^64bit
-(mke2fs) -b 65536 -i 67108864 -O ^64bit
-(mke2fs) -b 65536 -i 2048 -O ^64bit
-(mke2fs) -b 65536 -I 128 -i 1024 -O ^64bit
-(mke2fs) -b 65536 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 2048 -i 1024 -O ^64bit
-(mke2fs) -b 2048 -i 67108864 -O ^64bit
-(mke2fs) -b 2048 -i 2048 -O ^64bit
-(mke2fs) -b 2048 -I 128 -i 1024 -O ^64bit
-(mke2fs) -b 2048 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 1024 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 1024 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -i 67108864 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 2048 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 1024 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -i 2048 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 1024 -i 67108864 -N 1 -O ^64bit
-(mke2fs) -b 1024 -i 2048 -N 1 -O ^64bit
 (mke2fs) -b 1024 -i 67108864 -O ^64bit
 (mke2fs) -b 1024 -i 2048 -O ^64bit
 (mke2fs) -b 1024 -I 128 -O ^64bit
-(mke2fs) -b 65536 -I 128 -O ^64bit
-(mke2fs) -b 65536 -I 128 -i 67108864 -O ^64bit
-(mke2fs) -b 65536 -I 128 -i 2048 -O ^64bit
-(mke2fs) -b 65536 -I 128 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -I 128 -N 1 -O ^64bit
-(mke2fs) -b 2048 -I 128 -O ^64bit
-(mke2fs) -b 2048 -I 128 -i 67108864 -O ^64bit
-(mke2fs) -b 2048 -I 128 -i 2048 -O ^64bit
-(mke2fs) -b 2048 -I 128 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -I 128 -N 1 -O ^64bit
-(mke2fs) -b 1024 -I 128 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 2048 -N 4294967295 -O ^64bit
-(mke2fs) -b 1024 -I 128 -N 1 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 1 -O ^64bit
-(mke2fs) -b 1024 -I 128 -i 2048 -N 1 -O ^64bit
 (mke2fs) -b 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -i 2048 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -i 2048 -N 4294967295 -O ^64bit
 (mke2fs) -b 1024 -N 1 -O ^64bit
-(mke2fs) -b 65536 -N 1 -O ^64bit
-(mke2fs) -b 65536 -i 67108864 -N 1 -O ^64bit
-(mke2fs) -b 65536 -i 2048 -N 1 -O ^64bit
-(mke2fs) -b 2048 -N 1 -O ^64bit
-(mke2fs) -b 2048 -i 67108864 -N 1 -O ^64bit
-(mke2fs) -b 2048 -i 2048 -N 1 -O ^64bit
 (mke2fs) -b 65536 -O ^64bit
+(mke2fs) -b 65536 -O ^64bit,bigalloc
+(mke2fs) -b 65536 -i 1024 -O ^64bit
+(mke2fs) -b 65536 -i 67108864 -O ^64bit
+(mke2fs) -b 65536 -i 2048 -O ^64bit
+(mke2fs) -b 65536 -I 128 -O ^64bit
+(mke2fs) -b 65536 -N 4294967295 -O ^64bit
+(mke2fs) -b 65536 -N 1 -O ^64bit
 (mke2fs) -b 2048 -O ^64bit
+(mke2fs) -b 2048 -O ^64bit,bigalloc
+(mke2fs) -b 2048 -i 1024 -O ^64bit
+(mke2fs) -b 2048 -i 67108864 -O ^64bit
+(mke2fs) -b 2048 -i 2048 -O ^64bit
+(mke2fs) -b 2048 -I 128 -O ^64bit
+(mke2fs) -b 2048 -N 4294967295 -O ^64bit
+(mke2fs) -b 2048 -N 1 -O ^64bit
 (mke2fs) -i 1024 -O ^64bit
-(mke2fs) -i 1024 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 1024 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 1024 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 1024 -C 2048 -O ^64bit,bigalloc
 (mke2fs) -I 128 -i 1024 -O ^64bit
-(mke2fs) -I 128 -i 1024 -O ^64bit,inline_data
-(mke2fs) -I 128 -i 67108864 -O ^64bit
-(mke2fs) -I 128 -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -I 128 -i 67108864 -N 1 -O ^64bit
-(mke2fs) -I 128 -i 2048 -O ^64bit
-(mke2fs) -I 128 -i 2048 -N 4294967295 -O ^64bit
-(mke2fs) -I 128 -i 2048 -N 1 -O ^64bit
-(mke2fs) -I 128 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 65536 -I 128 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -b 2048 -I 128 -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -I 128 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 65536 -I 128 -i 1024 -N 1 -O ^64bit
-(mke2fs) -b 2048 -I 128 -i 1024 -N 1 -O ^64bit
 (mke2fs) -i 1024 -N 4294967295 -O ^64bit
-(mke2fs) -i 67108864 -N 4294967295 -O ^64bit
-(mke2fs) -i 2048 -N 4294967295 -O ^64bit
 (mke2fs) -i 1024 -N 1 -O ^64bit
-(mke2fs) -i 67108864 -N 1 -O ^64bit
-(mke2fs) -i 2048 -N 1 -O ^64bit
 (mke2fs) -i 67108864 -O ^64bit
-(mke2fs) -i 67108864 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 67108864 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 2048 -O ^64bit,bigalloc
+(mke2fs) -I 128 -i 67108864 -O ^64bit
+(mke2fs) -i 67108864 -N 4294967295 -O ^64bit
+(mke2fs) -i 67108864 -N 1 -O ^64bit
 (mke2fs) -i 2048 -O ^64bit
-(mke2fs) -i 2048 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 2048 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 2048 -C 536870912 -O ^64bit,bigalloc
-(mke2fs) -b 2048 -i 2048 -C 2048 -O ^64bit,bigalloc
+(mke2fs) -I 128 -i 2048 -O ^64bit
+(mke2fs) -i 2048 -N 4294967295 -O ^64bit
+(mke2fs) -i 2048 -N 1 -O ^64bit
 (mke2fs) -N 4294967295 -O ^64bit
 (mke2fs) -I 128 -N 4294967295 -O ^64bit
-(mke2fs) -I 128 -N 4294967295 -O ^64bit,inline_data
 (mke2fs) -N 1 -O ^64bit
 (mke2fs) -I 128 -N 1 -O ^64bit
-(mke2fs) -I 128 -N 1 -O ^64bit,inline_data
 (mke2fs) -O bigalloc
 (mke2fs) -b 1024 -O bigalloc
 (mke2fs) -b 1024 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 1025 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 1025 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 67108864 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 1025 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 1025 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 1025 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 1025 -N 1 -O bigalloc
 (mke2fs) -b 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 65536 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -I 128 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -I 128 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -C 536870912 -N 1 -O bigalloc
 (mke2fs) -b 1024 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 67108864 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 2048 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -I 128 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -C 2048 -N 1 -O bigalloc
 (mke2fs) -b 1024 -i 1024 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 1024 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 1024 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 1024 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -O bigalloc
-(mke2fs) -b 65536 -I 128 -i 1024 -O bigalloc
-(mke2fs) -b 65536 -i 1024 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -i 1024 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 1024 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -O bigalloc,inline_data
-(mke2fs) -b 1024 -I 128 -i 67108864 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 1024 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -i 1024 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 67108864 -N 1 -O bigalloc
-(mke2fs) -b 1024 -i 2048 -N 1 -O bigalloc
 (mke2fs) -b 1024 -i 67108864 -O bigalloc
 (mke2fs) -b 1024 -i 2048 -O bigalloc
 (mke2fs) -b 1024 -I 128 -O bigalloc
-(mke2fs) -b 65536 -I 128 -O bigalloc
-(mke2fs) -b 65536 -I 128 -i 67108864 -O bigalloc
-(mke2fs) -b 65536 -I 128 -i 2048 -O bigalloc
-(mke2fs) -b 65536 -I 128 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -I 128 -N 1 -O bigalloc
-(mke2fs) -b 2048 -I 128 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 67108864 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 2048 -O bigalloc
-(mke2fs) -b 2048 -I 128 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -I 128 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -O bigalloc,inline_data
-(mke2fs) -b 1024 -I 128 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -I 128 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -I 128 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -i 2048 -N 1 -O bigalloc
 (mke2fs) -b 1024 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -N 4294967295 -O bigalloc
 (mke2fs) -b 1024 -N 1 -O bigalloc
-(mke2fs) -b 1024 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 67108864 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 1024 -i 2048 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -N 1 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -N 1 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -N 1 -O bigalloc
-(mke2fs) -b 2048 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -N 1 -O bigalloc
 (mke2fs) -b 65536 -O bigalloc
+(mke2fs) -b 65536 -C 536870912 -O bigalloc
+(mke2fs) -b 65536 -i 1024 -O bigalloc
+(mke2fs) -b 65536 -i 67108864 -O bigalloc
+(mke2fs) -b 65536 -i 2048 -O bigalloc
+(mke2fs) -b 65536 -I 128 -O bigalloc
+(mke2fs) -b 65536 -N 4294967295 -O bigalloc
+(mke2fs) -b 65536 -N 1 -O bigalloc
 (mke2fs) -b 2048 -O bigalloc
-(mke2fs) -b 1024 -I 128 -C 1025 -O bigalloc
-(mke2fs) -b 1024 -C 1025 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -C 1025 -N 1 -O bigalloc
+(mke2fs) -b 2048 -C 536870912 -O bigalloc
+(mke2fs) -b 2048 -C 2048 -O bigalloc
+(mke2fs) -b 2048 -i 1024 -O bigalloc
+(mke2fs) -b 2048 -i 67108864 -O bigalloc
+(mke2fs) -b 2048 -i 2048 -O bigalloc
+(mke2fs) -b 2048 -I 128 -O bigalloc
+(mke2fs) -b 2048 -N 4294967295 -O bigalloc
+(mke2fs) -b 2048 -N 1 -O bigalloc
 (mke2fs) -C 536870912 -O bigalloc
 (mke2fs) -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -I 128 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -I 128 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 1024 -C 536870912 -O bigalloc
-(mke2fs) -I 128 -i 1024 -C 536870912 -O bigalloc,inline_data
-(mke2fs) -I 128 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -I 128 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -I 128 -i 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -I 128 -i 1024 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -i 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -i 1024 -C 536870912 -N 4294967295 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -i 67108864 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -i 2048 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -i 1024 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -i 1024 -C 536870912 -N 1 -O ^64bit,bigalloc
-(mke2fs) -b 65536 -i 1024 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -i 67108864 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -i 2048 -C 536870912 -N 1 -O bigalloc
 (mke2fs) -i 67108864 -C 536870912 -O bigalloc
 (mke2fs) -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 1024 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 1024 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 67108864 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 2048 -C 2048 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 2048 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -C 2048 -O bigalloc
-(mke2fs) -b 1024 -C 2048 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -C 2048 -N 1 -O bigalloc
 (mke2fs) -b 1024
 (mke2fs) -b 1024 -i 1024
 (mke2fs) -b 65536 -i 1024
-(mke2fs) -b 65536 -i 67108864
-(mke2fs) -b 1024 -i 67108864
-(mke2fs) -b 2048 -i 67108864
-(mke2fs) -b 65536 -I 128 -i 67108864
-(mke2fs) -b 65536 -i 67108864 -N 4294967295
-(mke2fs) -b 65536 -i 67108864 -N 1
-(mke2fs) -b 65536 -i 2048
-(mke2fs) -b 1024 -i 2048
-(mke2fs) -b 2048 -i 2048
-(mke2fs) -b 65536 -I 128 -i 2048
-(mke2fs) -b 65536 -i 2048 -N 4294967295
-(mke2fs) -b 65536 -i 2048 -N 1
-(mke2fs) -b 65536 -I 128 -i 1024
-(mke2fs) -b 1024 -I 128 -i 1024
-(mke2fs) -b 2048 -I 128 -i 1024
-(mke2fs) -b 65536 -I 128 -i 1024 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 1024 -N 4294967295
-(mke2fs) -b 65536 -I 128 -i 1024 -N 1
-(mke2fs) -b 65536 -i 1024 -N 4294967295
-(mke2fs) -b 1024 -i 1024 -N 4294967295
-(mke2fs) -b 2048 -i 1024 -N 4294967295
-(mke2fs) -b 65536 -i 1024 -N 1
-(mke2fs) -b 1024 -i 1024 -N 1
-(mke2fs) -b 2048 -i 1024 -N 1
 (mke2fs) -b 2048 -i 1024
+(mke2fs) -b 1024 -I 128 -i 1024
+(mke2fs) -b 1024 -i 1024 -N 4294967295
+(mke2fs) -b 1024 -i 1024 -N 1
+(mke2fs) -b 1024 -i 67108864
+(mke2fs) -b 65536 -i 67108864
+(mke2fs) -b 2048 -i 67108864
+(mke2fs) -b 1024 -I 128 -i 67108864
+(mke2fs) -b 1024 -i 67108864 -N 4294967295
+(mke2fs) -b 1024 -i 67108864 -N 1
+(mke2fs) -b 1024 -i 2048
+(mke2fs) -b 65536 -i 2048
+(mke2fs) -b 2048 -i 2048
+(mke2fs) -b 1024 -I 128 -i 2048
+(mke2fs) -b 1024 -i 2048 -N 4294967295
+(mke2fs) -b 1024 -i 2048 -N 1
 (mke2fs) -b 1024 -I 128
 (mke2fs) -b 65536 -I 128
-(mke2fs) -b 65536 -I 128 -N 4294967295
-(mke2fs) -b 1024 -I 128 -N 4294967295
-(mke2fs) -b 2048 -I 128 -N 4294967295
-(mke2fs) -b 65536 -I 128 -i 67108864 -N 4294967295
-(mke2fs) -b 65536 -I 128 -i 2048 -N 4294967295
-(mke2fs) -b 65536 -I 128 -N 1
-(mke2fs) -b 1024 -I 128 -N 1
-(mke2fs) -b 2048 -I 128 -N 1
-(mke2fs) -b 65536 -I 128 -i 67108864 -N 1
-(mke2fs) -b 65536 -I 128 -i 2048 -N 1
 (mke2fs) -b 2048 -I 128
-(mke2fs) -b 2048 -I 128 -i 67108864
-(mke2fs) -b 1024 -I 128 -i 67108864
-(mke2fs) -b 2048 -I 128 -i 67108864 -N 4294967295
-(mke2fs) -b 2048 -I 128 -i 67108864 -N 1
-(mke2fs) -b 2048 -I 128 -i 2048
-(mke2fs) -b 1024 -I 128 -i 2048
-(mke2fs) -b 2048 -I 128 -i 2048 -N 4294967295
-(mke2fs) -b 2048 -I 128 -i 2048 -N 1
 (mke2fs) -b 1024 -I 128 -O inline_data
+(mke2fs) -b 1024 -I 128 -N 4294967295
+(mke2fs) -b 1024 -I 128 -N 1
 (mke2fs) -b 1024 -N 4294967295
 (mke2fs) -b 65536 -N 4294967295
 (mke2fs) -b 2048 -N 4294967295
-(mke2fs) -b 2048 -i 67108864 -N 4294967295
-(mke2fs) -b 1024 -i 67108864 -N 4294967295
-(mke2fs) -b 2048 -i 2048 -N 4294967295
-(mke2fs) -b 1024 -i 2048 -N 4294967295
 (mke2fs) -b 1024 -N 1
 (mke2fs) -b 65536 -N 1
 (mke2fs) -b 2048 -N 1
-(mke2fs) -b 2048 -i 67108864 -N 1
-(mke2fs) -b 1024 -i 67108864 -N 1
-(mke2fs) -b 2048 -i 2048 -N 1
-(mke2fs) -b 1024 -i 2048 -N 1
 (mke2fs) -b 65536
 (mke2fs) -b 2048
-(mke2fs) -b 65536 -I 128 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 67108864 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -i 67108864 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 67108864 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 65536 -I 128 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 2048 -I 128 -i 2048 -C 536870912 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 65536 -i 2048 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 2048 -i 2048 -C 536870912 -N 1 -O bigalloc
-(mke2fs) -b 1024 -I 128 -C 536870912 -O bigalloc
-(mke2fs) -b 1024 -C 536870912 -N 4294967295 -O bigalloc
-(mke2fs) -b 1024 -C 536870912 -N 1 -O bigalloc
 (mke2fs) -O casefold
 (mke2fs) -O casefold -E encoding=utf8
 (mke2fs) -O ^dir_index
 (mke2fs) -O ^dir_nlink
 (mke2fs) -O ^dir_nlink,^extra_isize
 (mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^huge_file
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^huge_file,^metadata_csum
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^huge_file,uninit_bg
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^metadata_csum
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,^metadata_csum,uninit_bg
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg -E packed_meta_blocks=1
-(mke2fs) -O ^dir_nlink,^extra_isize,^flex_bg,uninit_bg
 (mke2fs) -O ^dir_nlink,^extra_isize,^huge_file
-(mke2fs) -O ^dir_nlink,^extra_isize,^huge_file,^metadata_csum
-(mke2fs) -O ^dir_nlink,^extra_isize,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^extra_isize,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^extra_isize,^huge_file,^metadata_csum,uninit_bg
-(mke2fs) -O ^dir_nlink,^extra_isize,^huge_file,uninit_bg
 (mke2fs) -O ^dir_nlink,^extra_isize,^metadata_csum
-(mke2fs) -O ^dir_nlink,^extra_isize,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^dir_nlink,^extra_isize,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^extra_isize,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^extra_isize,^metadata_csum,uninit_bg
 (mke2fs) -O ^dir_nlink,^extra_isize,uninit_bg
 (mke2fs) -O ^dir_nlink,^flex_bg
 (mke2fs) -O ^dir_nlink,^flex_bg,^huge_file
-(mke2fs) -O ^dir_nlink,^flex_bg,^huge_file,^metadata_csum
-(mke2fs) -O ^dir_nlink,^flex_bg,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^flex_bg,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^flex_bg,^huge_file,^metadata_csum,uninit_bg
-(mke2fs) -O ^dir_nlink,^flex_bg,^huge_file,uninit_bg
 (mke2fs) -O ^dir_nlink,^flex_bg,^metadata_csum
-(mke2fs) -O ^dir_nlink,^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^dir_nlink,^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^flex_bg,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^flex_bg,^metadata_csum,uninit_bg
 (mke2fs) -O ^dir_nlink,^flex_bg -E packed_meta_blocks=1
 (mke2fs) -O ^dir_nlink,^flex_bg,uninit_bg
 (mke2fs) -O ^dir_nlink,^huge_file
 (mke2fs) -O ^dir_nlink,^huge_file,^metadata_csum
-(mke2fs) -O ^dir_nlink,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^dir_nlink,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^dir_nlink,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^dir_nlink,^huge_file,^metadata_csum,uninit_bg
 (mke2fs) -O ^dir_nlink,^huge_file,uninit_bg
 (mke2fs) -O ^dir_nlink,^metadata_csum
 (mke2fs) -O ^dir_nlink,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^dir_nlink,^metadata_csum,journal_dev
 (mke2fs) -O ^dir_nlink,^metadata_csum,metadata_csum_seed
 (mke2fs) -O ^dir_nlink,^metadata_csum,uninit_bg
 (mke2fs) -O ^dir_nlink,uninit_bg
@@ -449,28 +133,14 @@
 (mke2fs) -O ^extra_isize
 (mke2fs) -O ^extra_isize,^flex_bg
 (mke2fs) -O ^extra_isize,^flex_bg,^huge_file
-(mke2fs) -O ^extra_isize,^flex_bg,^huge_file,^metadata_csum
-(mke2fs) -O ^extra_isize,^flex_bg,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^extra_isize,^flex_bg,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^extra_isize,^flex_bg,^huge_file,^metadata_csum,uninit_bg
-(mke2fs) -O ^extra_isize,^flex_bg,^huge_file,uninit_bg
 (mke2fs) -O ^extra_isize,^flex_bg,^metadata_csum
-(mke2fs) -O ^extra_isize,^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^extra_isize,^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -O ^extra_isize,^flex_bg,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^extra_isize,^flex_bg,^metadata_csum,uninit_bg
 (mke2fs) -O ^extra_isize,^flex_bg -E packed_meta_blocks=1
 (mke2fs) -O ^extra_isize,^flex_bg,uninit_bg
 (mke2fs) -O ^extra_isize,^huge_file
 (mke2fs) -O ^extra_isize,^huge_file,^metadata_csum
-(mke2fs) -O ^extra_isize,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^extra_isize,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^extra_isize,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^extra_isize,^huge_file,^metadata_csum,uninit_bg
 (mke2fs) -O ^extra_isize,^huge_file,uninit_bg
 (mke2fs) -O ^extra_isize,^metadata_csum
 (mke2fs) -O ^extra_isize,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^extra_isize,^metadata_csum,journal_dev
 (mke2fs) -O ^extra_isize,^metadata_csum,metadata_csum_seed
 (mke2fs) -O ^extra_isize,^metadata_csum,uninit_bg
 (mke2fs) -O ^extra_isize,uninit_bg
@@ -479,14 +149,9 @@
 (mke2fs) -O ^flex_bg
 (mke2fs) -O ^flex_bg,^huge_file
 (mke2fs) -O ^flex_bg,^huge_file,^metadata_csum
-(mke2fs) -O ^flex_bg,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^flex_bg,^huge_file,^metadata_csum,journal_dev
-(mke2fs) -O ^flex_bg,^huge_file,^metadata_csum,metadata_csum_seed
-(mke2fs) -O ^flex_bg,^huge_file,^metadata_csum,uninit_bg
 (mke2fs) -O ^flex_bg,^huge_file,uninit_bg
 (mke2fs) -O ^flex_bg,^metadata_csum
 (mke2fs) -O ^flex_bg,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^flex_bg,^metadata_csum,journal_dev
 (mke2fs) -O ^flex_bg,^metadata_csum,metadata_csum_seed
 (mke2fs) -O ^flex_bg,^metadata_csum,uninit_bg
 (mke2fs) -O ^flex_bg -E packed_meta_blocks=1
@@ -498,110 +163,53 @@
 (mke2fs) -O ^huge_file
 (mke2fs) -O ^huge_file,^metadata_csum
 (mke2fs) -O ^huge_file,^metadata_csum,journal_dev
-(mke2fs) -m 1 -O ^huge_file,^metadata_csum,journal_dev
 (mke2fs) -O ^huge_file,^metadata_csum,metadata_csum_seed
 (mke2fs) -O ^huge_file,^metadata_csum,uninit_bg
 (mke2fs) -O ^huge_file,uninit_bg
 (mke2fs) -O inline_data
 (mke2fs) -I 128 -O inline_data
 (mke2fs) -b 65536 -I 128 -O inline_data
-(mke2fs) -b 65536 -I 128 -O ^64bit,inline_data
-(mke2fs) -b 2048 -I 128 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -i 1024 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -i 67108864 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -i 2048 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -N 4294967295 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -N 1 -O ^64bit,inline_data
-(mke2fs) -b 65536 -I 128 -O inline_data,bigalloc
-(mke2fs) -b 2048 -I 128 -O inline_data,bigalloc
-(mke2fs) -b 65536 -I 128 -C 536870912 -O inline_data,bigalloc
-(mke2fs) -b 65536 -I 128 -i 67108864 -O inline_data
-(mke2fs) -b 1024 -I 128 -i 67108864 -O inline_data
-(mke2fs) -b 2048 -I 128 -i 67108864 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 67108864 -N 4294967295 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 67108864 -N 1 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 2048 -O inline_data
-(mke2fs) -b 1024 -I 128 -i 2048 -O inline_data
-(mke2fs) -b 2048 -I 128 -i 2048 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 2048 -N 4294967295 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 2048 -N 1 -O inline_data
-(mke2fs) -b 65536 -I 128 -N 4294967295 -O inline_data
-(mke2fs) -b 1024 -I 128 -N 4294967295 -O inline_data
-(mke2fs) -b 2048 -I 128 -N 4294967295 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 1024 -N 4294967295 -O inline_data
-(mke2fs) -b 65536 -I 128 -N 1 -O inline_data
-(mke2fs) -b 1024 -I 128 -N 1 -O inline_data
-(mke2fs) -b 2048 -I 128 -N 1 -O inline_data
-(mke2fs) -b 65536 -I 128 -i 1024 -N 1 -O inline_data
 (mke2fs) -b 2048 -I 128 -O inline_data
-(mke2fs) -b 2048 -I 128 -C 536870912 -O inline_data,bigalloc
-(mke2fs) -b 2048 -I 128 -C 2048 -O inline_data,bigalloc
-(mke2fs) -b 2048 -I 128 -i 1024 -O inline_data
-(mke2fs) -b 2048 -I 128 -i 1024 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -i 1024 -O inline_data
-(mke2fs) -b 2048 -I 128 -i 1024 -N 4294967295 -O inline_data
-(mke2fs) -b 2048 -I 128 -i 1024 -N 1 -O inline_data
 (mke2fs) -I 128 -i 1024 -O inline_data
-(mke2fs) -I 128 -i 1024 -N 4294967295 -O inline_data
-(mke2fs) -I 128 -i 1024 -N 4294967295 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -i 1024 -N 4294967295 -O inline_data
-(mke2fs) -I 128 -i 67108864 -N 4294967295 -O inline_data
-(mke2fs) -I 128 -i 2048 -N 4294967295 -O inline_data
-(mke2fs) -I 128 -i 1024 -N 1 -O inline_data
-(mke2fs) -I 128 -i 1024 -N 1 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -i 1024 -N 1 -O inline_data
-(mke2fs) -I 128 -i 67108864 -N 1 -O inline_data
-(mke2fs) -I 128 -i 2048 -N 1 -O inline_data
 (mke2fs) -I 128 -i 67108864 -O inline_data
-(mke2fs) -I 128 -i 67108864 -O ^64bit,inline_data
-(mke2fs) -b 1024 -I 128 -i 67108864 -O ^64bit,inline_data
-(mke2fs) -b 2048 -I 128 -i 67108864 -O ^64bit,inline_data
-(mke2fs) -I 128 -i 2048 -O ^64bit,inline_data
-(mke2fs) -I 128 -i 67108864 -N 4294967295 -O ^64bit,inline_data
-(mke2fs) -I 128 -i 67108864 -N 1 -O ^64bit,inline_data
-(mke2fs) -I 128 -i 67108864 -C 536870912 -O inline_data,bigalloc
 (mke2fs) -I 128 -i 2048 -O inline_data
-(mke2fs) -I 128 -i 2048 -C 536870912 -O inline_data,bigalloc
 (mke2fs) -I 128 -N 4294967295 -O inline_data
 (mke2fs) -I 128 -N 1 -O inline_data
 (mke2fs) -i 1024
 (mke2fs) -I 128 -i 1024
+(mke2fs) -b 65536 -I 128 -i 1024
+(mke2fs) -b 2048 -I 128 -i 1024
 (mke2fs) -I 128 -i 67108864
-(mke2fs) -I 128 -i 67108864 -N 4294967295
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 4294967295
-(mke2fs) -I 128 -i 1024 -N 4294967295
-(mke2fs) -I 128 -i 2048 -N 4294967295
-(mke2fs) -I 128 -i 67108864 -N 1
-(mke2fs) -b 1024 -I 128 -i 67108864 -N 1
-(mke2fs) -I 128 -i 1024 -N 1
-(mke2fs) -I 128 -i 2048 -N 1
 (mke2fs) -I 128 -i 2048
+(mke2fs) -I 128 -i 1024 -N 4294967295
+(mke2fs) -I 128 -i 1024 -N 1
 (mke2fs) -i 1024 -N 4294967295
+(mke2fs) -b 65536 -i 1024 -N 4294967295
+(mke2fs) -b 2048 -i 1024 -N 4294967295
 (mke2fs) -i 67108864 -N 4294967295
 (mke2fs) -i 2048 -N 4294967295
 (mke2fs) -i 1024 -N 1
+(mke2fs) -b 65536 -i 1024 -N 1
+(mke2fs) -b 2048 -i 1024 -N 1
 (mke2fs) -i 67108864 -N 1
 (mke2fs) -i 2048 -N 1
 (mke2fs) -i 67108864
 (mke2fs) -i 2048
 (mke2fs) -I 128
 (mke2fs) -I 128 -N 4294967295
+(mke2fs) -b 65536 -I 128 -N 4294967295
+(mke2fs) -b 2048 -I 128 -N 4294967295
+(mke2fs) -I 128 -i 67108864 -N 4294967295
+(mke2fs) -I 128 -i 2048 -N 4294967295
 (mke2fs) -I 128 -N 1
+(mke2fs) -b 65536 -I 128 -N 1
+(mke2fs) -b 2048 -I 128 -N 1
+(mke2fs) -I 128 -i 67108864 -N 1
+(mke2fs) -I 128 -i 2048 -N 1
 (mke2fs) -O journal_dev
 (mke2fs) -O ^metadata_csum,journal_dev
 (mke2fs) -O ^metadata_csum,journal_dev,metadata_csum_seed
 (mke2fs) -O ^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^dir_nlink,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^dir_nlink,^extra_isize,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^dir_nlink,^flex_bg,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^dir_nlink,^huge_file,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^extra_isize,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^extra_isize,^flex_bg,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^extra_isize,^huge_file,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^flex_bg,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^flex_bg,^huge_file,^metadata_csum,journal_dev,uninit_bg
-(mke2fs) -O ^flex_bg,^metadata_csum,journal_dev,uninit_bg -E packed_meta_blocks=1
-(mke2fs) -O ^huge_file,^metadata_csum,journal_dev,uninit_bg
 (mke2fs) -m 1 -O journal_dev
 (mke2fs) -O largedir
 (mke2fs) -O ^large_file
