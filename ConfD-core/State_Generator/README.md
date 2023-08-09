@@ -2,7 +2,7 @@ CONFIG STATE BUILDER
 github: https://github.com/data-storage-lab/ConfD
 
 The configuration state builder is a script which generates configuration states to be tested/used in the ConfD-plugins.
-There are actually two scripts which handle generating states. The first is config_state_builder, which creates valid states to be used in most of the plugings. There is also violate_config_state_builder, which creates intentionally invalid states to be used in plugin #2 
+There are actually two scripts which handle generating states. The first is config_state_builder, which creates valid states to be used in most of the plugins. There is also violate_config_state_builder, which creates intentionally invalid states to be used in plugin #2 
 The script requires a couple of json file inputs:
 
 	mke2fs_constraings.json - Generated from the Dependency Analyzer script. Describes configuration parameter constraints. 

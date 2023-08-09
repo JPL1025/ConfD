@@ -23,310 +23,248 @@ argument_key = {
 reverse_argument_key = {v: k for k, v in argument_key.items()}
 
 feature_args = {
-        "blocktype, blocksize, volblocksize", "checksum", "compression", "copies"
-        }
+    "volblocksize", "checksum", "compression", "copies"
+}
 
 default_feature_args = {
-        "blocktype": "disable",
-        "volblocksize": 8192,
-        "blocksize": 8192,
-        "checksum": 0,
-        "compression": 0,
-        "copies": 2
-        }
+    "volblocksize": 8192,
+    "checksum": 0,
+    "compression": 0,
+    "copies": 2
+}
 
 
 class Configuration:
     arg = None
-    
+
     def __init__(self):
         self.arg = dict()
         for a in default_feature_args:
             self.arg[a] = default_feature_args[a]
 
-#finds next largest number power of 2
-#https://www.techiedelight.com/round-next-highest-power-2/
-def nextPow2(n):
-    # decrement `n` (to handle cases when `n` itself
-    # is a power of 2)
-    n = n - 1
-    
-    # do till only one bit is left
-    while n & n - 1:
-        n = n & n - 1       # unset rightmost bit
-    
-    #'n' is now a power of two
 
-    #return next power of two
-    return n << 1
-
-#looks up by id for constraint_data
+# looks up by id for constraint_data
 def id_lookup(constraint_data, id):
     for i in constraint_data:
-        if(constraint_data[i]['id'] == id):
-            return(i)
-    
+        if (constraint_data[i]['id'] == id):
+            return (i)
 
-#Takes command line style config, adds params to existing Configuration
+
+# Takes command line style config, adds params to existing Configuration
 def read_config(line, my_config):
     params = line.split(' -')
-    #Parse command parameter
+    # Parse command parameter
     for param in params:
-        if(param != "(mkezfs)" and param != "\n" and param[0] != 'O'):
-                    
-            #print(param.strip().split(' '))
-            key=param.strip().split(' ')[0]
-            val=param.strip().split(' ')[1]
-            my_config.arg[reverse_argument_key["-"+key]]=val
-                    
-            #print(reverse_argument_key["-"+key])
-        
-        #case '-O'
+        if (param != "(mkezfs)" and param != "\n" and param[0] != 'O'):
+
+            # print(param.strip().split(' '))
+            key = param.strip().split(' ')[0]
+            val = param.strip().split(' ')[1]
+            my_config.arg[reverse_argument_key["-" + key]] = val
+
+            # print(reverse_argument_key["-"+key])
+
+        # case '-O'
         elif (param[0] == 'O'):
             clean = param.strip().split(' ')[1].split(',')
             for c in clean:
                 my_config.arg[c] = ""
-            
 
-#Determines if a given Configuration is valid within given constraints
+
+# Determines if a given Configuration is valid within given constraints
 def verify_config(my_config, constraint_data):
-    #Step 1 - verify all numerical constraints
-    #TODO account for postfixs on numbers
+    # Step 1 - verify all numerical constraints
+    # TODO account for postfixs on numbers
     for a in my_config.arg:
-        if(a != "revision" and a != "encoding"):
-            #print(constraint_data[a])
-            #print(a + " : " + my_config.arg[a])
-            if(constraint_data[a]["takes_value"] == "yes"):
-                #Tests Max
-                if(constraint_data[a]["value_range_max"] != None and (int(constraint_data[a]["value_range_max"]) < int(my_config.arg[a]))):
-                    #print("Max:" + constraint_data[a]["value_range_max"])
-                    #print("Act:" + my_config.arg[a])
-                    #print(constraint_data[a])
-                    #print(" Max violated")
+        if (a != "revision" and a != "encoding"):
+            # print(constraint_data[a])
+            # print(a + " : " + my_config.arg[a])
+            if (constraint_data[a]["takes_value"] == "yes"):
+                # Tests Max
+                if (constraint_data[a]["value_range_max"] != None and (
+                        int(constraint_data[a]["value_range_max"]) < int(my_config.arg[a]))):
+                    # print("Max:" + constraint_data[a]["value_range_max"])
+                    # print("Act:" + my_config.arg[a])
+                    # print(constraint_data[a])
+                    # print(" Max violated")
                     return False
-                #Tests Min
-                if(constraint_data[a]["value_range_min"] != None and (int(constraint_data[a]["value_range_min"]) > int(my_config.arg[a]))):
-                    #print(constraint_data[a])
-                    #print(" Min violated")
+                # Tests Min
+                if (constraint_data[a]["value_range_min"] != None and (
+                        int(constraint_data[a]["value_range_min"]) > int(my_config.arg[a]))):
+                    # print(constraint_data[a])
+                    # print(" Min violated")
                     return False
 
-
-    #Step 2 - verify critical enabled/disabled and smaller
+    # Step 2 - verify critical enabled/disabled and smaller
     for a in my_config.arg:
-        if(a != "revision" and a != "encoding"):
-            #print(constraint_data[a])
-            #print(a + " : " + my_config.arg[a])
-            if(constraint_data[a].get("critical", None) != None):
-                #print(constraint_data[a]["critical"])
+        if (a != "revision" and a != "encoding"):
+            # print(constraint_data[a])
+            # print(a + " : " + my_config.arg[a])
+            if (constraint_data[a].get("critical", None) != None):
+                # print(constraint_data[a]["critical"])
                 for crit in constraint_data[a]["critical"]:
-                    #print(crit + " : " + constraint_data[a]["critical"][crit])
-                    #enabled crit test
-                    if((constraint_data[a]["critical"][crit] == "enable") and ((my_config.arg.get(crit, None) == None) or (my_config.arg[crit] == "disable"))):
-                        #print(constraint_data[a])
-                        #print(crit + " violated")
-                        #print("")
+                    # print(crit + " : " + constraint_data[a]["critical"][crit])
+                    # enabled crit test
+                    if ((constraint_data[a]["critical"][crit] == "enable") and (
+                            (my_config.arg.get(crit, None) == None) or (my_config.arg[crit] == "disable"))):
+                        # print(constraint_data[a])
+                        # print(crit + " violated")
+                        # print("")
                         return False
-                    if((constraint_data[a]["critical"][crit] == "disable") and (my_config.arg.get(crit, None) != None) and (my_config.arg[crit] == "enable")):
-                        #print(constraint_data[a])
-                        #print(crit + " violated")
-                        #print("")
+                    if ((constraint_data[a]["critical"][crit] == "disable") and (
+                            my_config.arg.get(crit, None) != None) and (my_config.arg[crit] == "enable")):
+                        # print(constraint_data[a])
+                        # print(crit + " violated")
+                        # print("")
                         return False
-                    if((constraint_data[a]["critical"][crit] == "1") and ((my_config.arg.get(crit, None) == None) or (my_config.arg[crit] == "0"))):
-                        #print(constraint_data[a])
-                        #print(crit + " violated")
-                        #print("")
-                        return False
-                    if((constraint_data[a]["critical"][crit] == "0") and (my_config.arg.get(crit, None) != None) and (my_config.arg[crit] == "1")):
-                        #print(constraint_data[a])
-                        #print(crit + " violated")
-                        #print("")
-                        return False
+                    # tests smaller
+                    if ((constraint_data[a]["critical"][crit] == "smaller") and (
+                            my_config.arg.get(crit, None) != None)):
+                        if (int(my_config.arg[a]) < int(my_config.arg[crit])):
+                            # print(constraint_data[a])
+                            # print(crit + " violated")
+                            # print("")
+                            return False
     return True
 
-#Generates states up to target number
-def generate(my_config, constraint_data, target_num, final_states, try_list):
-    global states_made
-    global depth
-    depth += 1
-    for id in try_list:
-        #checks if valid id num
-        if(id_lookup(constraint_data, id) != None):
-            print("looking at " + id_lookup(constraint_data, id))
-            #check if completed task
-            if(states_made >= target_num):
-                depth -= 1
-                return
 
-            #checks if too deep
-            if(depth > max_depth):
-                depth -= 1
-                return
+# gets critical dependencies where something needs to be disabled, also returns number of variables in the json
+def getCritDisable(constraint_data):
+    disable = []
 
+    for a in constraint_data:
+        for crit in constraint_data[a]["critical"]:
+            if (constraint_data[a]["critical"][crit] == "disable"):
+                disable.append(crit)
 
-            #creates new state(s)
-            new_configs = []
-            temp = copy.deepcopy(my_config)
-            new_configs.append(temp)
+    return disable
 
-            #checks if arg already present
-            if(my_config.arg.get(id_lookup(constraint_data, id), None) != None):
-                if(default_feature_args.get(id_lookup(constraint_data, id), None) == None):
-                    #case not defualt but dup
-                    continue
-                else:
-                    #case default
-                    if(constraint_data[id_lookup(constraint_data, id)]["takes_value"] == "no"):
-                        #case no parameter
-                        temp.arg[id_lookup(constraint_data, id)]="disable"
-                    elif(constraint_data[id_lookup(constraint_data, id)]["value_range_min"] != None):
-                        if(constraint_data[id_lookup(constraint_data, id)]["value_range_max"] != None):
-                            #case min and max
-                            temp2 = copy.deepcopy(my_config)
-                            new_configs.append(temp2)
-                            temp3 = copy.deepcopy(my_config)
-                            new_configs.append(temp3)
+def simpleCMD(state, constraint_data, place):
+    command = "zfs create "
 
-                            temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_min"]
-                            temp2.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_max"]
-                            temp3.arg[id_lookup(constraint_data, id)]=nextPow2(int(constraint_data[id_lookup(constraint_data, id)]["value_range_min"]) + 1)
-                        else:
-                            #case just min
-                            temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_min"]
-                    else:
-                        #case just max
-                        temp.arg[id_lookup(constraint_data, id)]=1
+    id = 1
 
-            else:
-                #case not a dup
-                if(constraint_data[id_lookup(constraint_data, id)]["takes_value"] == "no"):
-                    #case no parameter
-                    temp.arg[id_lookup(constraint_data, id)]="enable"
-                elif(constraint_data[id_lookup(constraint_data, id)]["value_range_min"] != None):
-                    if(constraint_data[id_lookup(constraint_data, id)]["value_range_max"] != None):
-                        #case min and max
-                        temp2 = copy.deepcopy(my_config)
-                        new_configs.append(temp2)
-                        temp3 = copy.deepcopy(my_config)
-                        new_configs.append(temp3)
+    for a in state:
+        broken = False
 
-                        temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_min"]
-                        temp2.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_max"]
-                        temp3.arg[id_lookup(constraint_data, id)]=nextPow2(int(constraint_data[id_lookup(constraint_data, id)]["value_range_min"]) + 1)
-                    else:
-                        #case just min
-                        temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_min"]
-                else:
-                    if(constraint_data[id_lookup(constraint_data, id)]["value_range_max"] != None):
-                        #case just max
-                        temp2 = copy.deepcopy(my_config)
-                        new_configs.append(temp2)
+        if a == "disabled":
+            id += 1
+            continue
 
-                        temp.arg[id_lookup(constraint_data, id)]=constraint_data[id_lookup(constraint_data, id)]["value_range_max"]
-                        temp2.arg[id_lookup(constraint_data, id)]=1
-                    else:
-                        #case no min/max
-                        temp.arg[id_lookup(constraint_data, id)]=1
+        variable = constraint_data[id_lookup(constraint_data, id)]["variable"]
+        variable = variable[9:]
+        variable = variable.lower()
 
+        for b in default_feature_args:
+            if (variable == b and a == default_feature_args[b]):
+                id += 1
+                broken = True
+                continue
+        if broken == True:
+            continue
 
-            for temp_config in new_configs:
-                #print(temp_config.arg)
-                #checks if state already been added
-                seen = False
-                for past in final_states:
-                    if(past.arg == temp_config.arg):                #TODO write comparator?
-                        seen = True
-                if(seen == False):
-                    #adds configuration if deep enough & valid
-                    if(depth > 0 and verify_config(temp_config, constraint_data) == True):
-                        states_made += 1
-                        print("depth: " + str(depth) + "; states made: " + str(states_made))
-                        print(temp_config.arg)
-                        print(id_lookup(constraint_data, id))
-                        print("")
-                        final_states.append(temp_config)
-
-                    #determine what to try next
-                    next_list = []
-                    for name in constraint_data[id_lookup(constraint_data, id)]["dependency"]:
-                        next_list.append(constraint_data[name]["id"])
-                    if(constraint_data[id_lookup(constraint_data, id)].get("critical", None) != None):
-                        for name in constraint_data[id_lookup(constraint_data, id)]["critical"].keys():
-                            next_list.append(constraint_data[name]["id"])
-                    #print(next_list)
-                    #print("")
-
-                    #go deeper
-                    generate(temp_config, constraint_data, target_num, final_states, next_list)
-
-    depth -= 1
-
-#converts fron Configuration to command line style 
-def ConfigToCMD(config, constraint_data, location):
-    output="zfs create"
-    features = []
-
-    for arg in config.arg:
-        #Skips if part of default config
-        if((default_feature_args.get(arg, None) == None) or ((default_feature_args.get(arg, None) != None) and (str(default_feature_args[arg]) != str(config.arg[arg])))):
-            flag = constraint_data[arg]["flag"]
-            if(flag == "-o"):
-                features.append(arg)
-            else:
-                output += " " + flag + " " + str(config.arg[arg])
-
-    for item in features:
-        output += " -o "
-        output += str(item)
-        output += "="
-        #for these arguments, output on and off rather than 0 or 1
-        if (str(item) == "checksum" or str(item) == "compression"):
-            if (config.arg[item] == 0):
-                output += "on"
-            else:
-                output += "off"
+        if variable == "blocksize":
+            command += "-b "
         else:
-            output += str(config.arg[item])
+            command += "-o "
 
-        output += location
+        value = a
+        if (variable == "checksum" or variable == "compression"):
+            if a == 1:
+                value = "off"
+            else:
+                value = "on"
+        command += str(variable) + "=" + str(value) + " "
+        id += 1
 
-    return output
+    command += place
+    return command
+
+
+def simpleVerify(state, constraint_data):
+    if state[0] == "disabled" and state[1] == "disabled":
+        return False
+    if state[0] != "disabled" and state[1] != "disabled":
+        return False
+    return True
+
+
+# attempt to generate the correct number of states with a different algorithm
+def simpleGenerate(initial_state, constraint_data, disable, max_depth):
+    global states_created, state_depth
+    state_depth += 1
+
+    # if all variables have been added, add state to list
+    if state_depth > max_depth:
+        if simpleVerify(initial_state, constraint_data):
+            state_list.append(initial_state.copy())
+            states_created += 1
+            print(initial_state)
+            print(str(states_created) + " states created")
+        state_depth -= 1
+        return
+
+    variable = constraint_data[id_lookup(constraint_data, state_depth)]["variable"]
+    print("looking at " + variable)
+
+    # if this variable is on the disable list, make states without it
+    for a in disable:
+        if a == id_lookup(constraint_data, state_depth):
+
+            initial_state.append("disabled")
+            simpleGenerate(initial_state, constraint_data, disable, max_depth)
+            initial_state.pop(state_depth - 1)
+
+
+    temp = int(constraint_data[id_lookup(constraint_data, state_depth)]["value_range_min"])
+
+    while temp <= int(constraint_data[id_lookup(constraint_data, state_depth)]["value_range_max"]):
+
+        initial_state.append(temp)
+        simpleGenerate(initial_state, constraint_data, disable, max_depth)
+        initial_state.pop(state_depth - 1)
+
+        if (constraint_data[id_lookup(constraint_data, state_depth)]["variable"] == "ZFS_PROP_BLOCKSIZE" or constraint_data[id_lookup(constraint_data, state_depth)]["variable"] == "ZFS_PROP_VOLBLOCKSIZE"):
+            temp *= 2
+        else:
+            temp += 1
+
+    state_depth -= 1
+    return
 
 
 def main(argv):
     global default_feature_args
     global max_depth
-    
-    if(not os.path.exists("zfs_constraints2.json")):
+
+    if (not os.path.exists("zfs_constraints.json")):
         print("Missing zfs_constraints.json file")
         return -1
 
-    #if(not os.path.exists("zfs_default_config.json")):
+    # if(not os.path.exists("zfs_default_config.json")):
     #    print("Missing zfs_default_config.json file")
     #    return -1
 
-    if(len(sys.argv) != 4):
+    if (len(sys.argv) != 2):
         print("Invalid arguments")
         return -1
-        
-    max_depth = int(sys.argv[1])
-    max_final_states = int(sys.argv[2])
-    location = str(sys.argv[3])
-    
-    #get constraints 
-    json_file=open('zfs_constraints2.json')
+
+    location = sys.argv[1]
+
+    # get constraints
+    json_file = open('zfs_constraints.json')
     constraint_data = json.load(json_file)
     json_file.close()
-    
-    #id_lookup(constraint_data, 1)
-    #print(constraint_data['blocksize'])
-    
-    
-    #get default configuration
-    #json_file=open('zfs_default_config.json')
-    #default_feature_args = json.load(json_file)
-    #json_file.close()
-    
-    #Checking some states
+
+    # id_lookup(constraint_data, 1)
+    # print(constraint_data['blocksize'])
+
+    # get default configuration
+    # json_file=open('zfs_default_config.json')
+    # default_feature_args = json.load(json_file)
+    # json_file.close()
+
+    # Checking some states
     """
     config_file='config_state_ext4.txt'
     with open(config_file, "r", encoding='utf-8') as f:
@@ -351,19 +289,37 @@ def main(argv):
     """
     my_config = Configuration()
     final_states = []
-    generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1,7)))
+    #generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1, 6)))
 
+    disable = getCritDisable(constraint_data)
 
-    print("Final States")
+    # Get the number of variables
+    num_vars = 0
+    for a in constraint_data:
+        num_vars += 1
+
+    global state_list
+    state_list = []
+    blank_config = []
+
+    global state_depth
+    global states_created
+    state_depth = 0
+    states_created = 0
+
+    simpleGenerate(blank_config, constraint_data, disable, num_vars)
+
+    print("\nFinal States:")
     output_file = open("zfs_output.txt", "w")
-    for state in final_states:
-        #print(state.arg)
-        print(ConfigToCMD(state, constraint_data, location))
-        output_file.write(ConfigToCMD(state, constraint_data, location) + "\n")
+    for state in state_list:
+
+        cmd = simpleCMD(state, constraint_data, location)
+        print(cmd)
+        output_file.write(cmd + "\n")
+
+
     output_file.close()
-    
-    
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-
