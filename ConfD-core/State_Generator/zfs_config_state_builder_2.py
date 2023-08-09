@@ -281,30 +281,103 @@ def getCritDisable(constraint_data):
 
     return disable
 
+def simpleCMD(state, constraint_data, place):
+    command = "zfs create "
+
+    id = 1
+
+    for a in state:
+        broken = False
+
+        if a == "disabled":
+            id += 1
+            continue
+
+        variable = constraint_data[id_lookup(constraint_data, id)]["variable"]
+        variable = variable[9:]
+        variable = variable.lower()
+
+        for b in default_feature_args:
+            if (variable == b and a == default_feature_args[b]):
+                id += 1
+                broken = True
+                continue
+        if broken == True:
+            break
+
+        if variable == "blocksize":
+            command += "-b "
+        else:
+            command += "-o "
+
+        value = a
+        if (variable == "checksum" or variable == "compression"):
+            if a == 1:
+                value = "off"
+            else:
+                value = "on"
+        command += str(variable) + "=" + str(value) + " "
+        id += 1
+
+    command += place
+    return command
+
+
+def simpleVerify(state, constraint_data):
+    if state[0] == "disabled" and state[1] == "disabled":
+        return False
+    if state[0] != "disabled" and state[1] != "disabled":
+        return False
+    return True
+
 
 # attempt to generate the correct number of states with a different algorithm
 def simpleGenerate(initial_state, constraint_data, disable, max_depth):
-    global states_created
-    global state_depth
+    global states_created, state_depth
     state_depth += 1
 
     # if all variables have been added, add state to list
     if state_depth > max_depth:
-        state_list.append(initial_state)
+        if simpleVerify(initial_state, constraint_data):
+            state_list.append(initial_state.copy())
+            states_created += 1
+            print(initial_state)
+            print(str(states_created) + " states created")
+        state_depth -= 1
+        return
+
+    variable = constraint_data[id_lookup(constraint_data, state_depth)]["variable"]
+    print("looking at " + variable)
 
     # if this variable is on the disable list, make states without it
     for a in disable:
         if a == id_lookup(constraint_data, state_depth):
+
+            initial_state.append("disabled")
             simpleGenerate(initial_state, constraint_data, disable, max_depth)
+            initial_state.pop(state_depth - 1)
 
 
+    temp = int(constraint_data[id_lookup(constraint_data, state_depth)]["value_range_min"])
 
+    while temp <= int(constraint_data[id_lookup(constraint_data, state_depth)]["value_range_max"]):
+
+        initial_state.append(temp)
+        simpleGenerate(initial_state, constraint_data, disable, max_depth)
+        initial_state.pop(state_depth - 1)
+
+        if (constraint_data[id_lookup(constraint_data, state_depth)]["variable"] == "ZFS_PROP_BLOCKSIZE" or constraint_data[id_lookup(constraint_data, state_depth)]["variable"] == "ZFS_PROP_VOLBLOCKSIZE"):
+            temp *= 2
+        else:
+            temp += 1
+
+    state_depth -= 1
     return
 
 
 # converts fron Configuration to command line style
 def ConfigToCMD(config, constraint_data, location):
-    output = "zfs create"
+    output = "zfs create "
     features = []
 
     for arg in config.arg:
@@ -351,7 +424,7 @@ def main(argv):
         print("Invalid arguments")
         return -1
 
-    location = int(sys.argv[1])
+    location = sys.argv[1]
 
     # get constraints
     json_file = open('zfs_constraints.json')
@@ -393,14 +466,6 @@ def main(argv):
     final_states = []
     #generate(copy.deepcopy(my_config), constraint_data, max_final_states, final_states, list(range(1, 6)))
 
-    print("Final States")
-    output_file = open("zfs_output_2.txt", "w")
-    for state in final_states:
-        # print(state.arg)
-        print(ConfigToCMD(state, constraint_data, location))
-        output_file.write(ConfigToCMD(state, constraint_data) + "\n")
-    output_file.close()
-
     disable = getCritDisable(constraint_data)
 
     # Get the number of variables
@@ -412,7 +477,23 @@ def main(argv):
     state_list = []
     blank_config = []
 
-    # simpleGenerate(blank_config, constraint_data, disable, num_vars)
+    global state_depth
+    global states_created
+    state_depth = 0
+    states_created = 0
+
+    simpleGenerate(blank_config, constraint_data, disable, num_vars)
+
+    print("\nFinal States:")
+    output_file = open("zfs_output_2.txt", "w")
+    for state in state_list:
+
+        cmd = simpleCMD(state, constraint_data, location)
+        print(cmd)
+        output_file.write(cmd + "\n")
+
+
+    output_file.close()
 
 
 if __name__ == "__main__":

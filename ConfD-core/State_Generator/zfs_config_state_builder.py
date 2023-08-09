@@ -261,7 +261,7 @@ def generate(my_config, constraint_data, target_num, final_states, try_list):
     depth -= 1
 
 #converts fron Configuration to command line style 
-def ConfigToCMD(config, constraint_data):
+def ConfigToCMD(config, constraint_data, location):
     output="zfs create"
     features = []
 
@@ -287,6 +287,8 @@ def ConfigToCMD(config, constraint_data):
         else:
             output += str(config.arg[item])
 
+        output += location
+
     return output
 
 
@@ -302,12 +304,13 @@ def main(argv):
     #    print("Missing zfs_default_config.json file")
     #    return -1
 
-    if(len(sys.argv) != 3):
+    if(len(sys.argv) != 4):
         print("Invalid arguments")
         return -1
         
     max_depth = int(sys.argv[1])
     max_final_states = int(sys.argv[2])
+    location = str(sys.argv[3])
     
     #get constraints 
     json_file=open('zfs_constraints2.json')
@@ -355,8 +358,8 @@ def main(argv):
     output_file = open("zfs_output.txt", "w")
     for state in final_states:
         #print(state.arg)
-        print(ConfigToCMD(state, constraint_data))
-        output_file.write(ConfigToCMD(state, constraint_data) + "\n")
+        print(ConfigToCMD(state, constraint_data, location))
+        output_file.write(ConfigToCMD(state, constraint_data, location) + "\n")
     output_file.close()
     
     

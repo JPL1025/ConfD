@@ -1,7 +1,7 @@
 {
     "blocksize": {
         "id": 1,
-        "variable": "blocksize",
+        "variable": "ZFS_PROP_BLOCKSIZE",
         "flag": "-b",
         "value_type": "i64",
         "takes_value": "yes",
