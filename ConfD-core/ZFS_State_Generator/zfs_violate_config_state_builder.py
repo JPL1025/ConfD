@@ -276,7 +276,7 @@ def main(argv):
     num_volume = 0
 
     print("\nFinal States:")
-    output_file = open("zfs_output.txt", "w")
+    output_file = open("zfs_output_bad.txt", "w")
     for state in state_list:
 
         cmd = simpleCMD(state, constraint_data, location, vol_size)
